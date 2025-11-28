@@ -88,23 +88,6 @@ export default function AuraCursor() {
                     />
                 )}
             </svg>
-
-            {/* Main Cursor Follower */}
-            <motion.div
-                style={{ x: cursorXSpring, y: cursorYSpring }}
-                className="fixed top-0 left-0"
-            >
-                <div className={`relative -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${isHovering ? 'scale-150' : 'scale-100'}`}>
-                    {/* Core White Dot */}
-                    <div className="w-2.5 h-2.5 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,0.9)] z-20 relative" />
-
-                    {/* Gold Aura Glow */}
-                    <div className="absolute inset-0 w-full h-full bg-gold-400 rounded-full opacity-60 blur-md animate-pulse z-10" />
-
-                    {/* Outer Ring */}
-                    <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-gold-500/30 rounded-full transition-all duration-500 ${isHovering ? 'w-12 h-12 border-gold-400/60 bg-gold-500/5' : ''}`} />
-                </div>
-            </motion.div>
         </div>
     );
 }
