@@ -15,28 +15,17 @@ export default function AuraCursor() {
 
     // Trail points state
     const [trailPoints, setTrailPoints] = useState([]);
-    const [showTrail, setShowTrail] = useState(true);
     const trailLength = 20; // Number of trail segments
-    const fadeTimeoutRef = useRef(null);
+    const fadeIntervalRef = useRef(null);
+    const lastMoveTimeRef = useRef(Date.now());
 
     useEffect(() => {
         const moveCursor = (e) => {
             cursorX.set(e.clientX);
             cursorY.set(e.clientY);
 
-            // Show trail when moving
-            setShowTrail(true);
-
-            // Clear existing timeout
-            if (fadeTimeoutRef.current) {
-                clearTimeout(fadeTimeoutRef.current);
-            }
-
-            // Set new timeout to hide trail after 1 second
-            fadeTimeoutRef.current = setTimeout(() => {
-                setShowTrail(false);
-                setTrailPoints([]);
-            }, 1000);
+            // Update last move time
+            lastMoveTimeRef.current = Date.now();
 
             // Add new point to trail
             setTrailPoints(prev => {
@@ -59,14 +48,28 @@ export default function AuraCursor() {
             }
         };
 
+        // Fade out trail gradually when not moving
+        fadeIntervalRef.current = setInterval(() => {
+            const timeSinceLastMove = Date.now() - lastMoveTimeRef.current;
+
+            // If mouse hasn't moved for 100ms, start removing points from the end
+            if (timeSinceLastMove > 100) {
+                setTrailPoints(prev => {
+                    if (prev.length === 0) return prev;
+                    // Remove last point (oldest point at the end of the trail)
+                    return prev.slice(0, -1);
+                });
+            }
+        }, 50); // Remove one point every 50ms for smooth fade
+
         window.addEventListener('mousemove', moveCursor);
         window.addEventListener('mouseover', handleMouseOver);
 
         return () => {
             window.removeEventListener('mousemove', moveCursor);
             window.removeEventListener('mouseover', handleMouseOver);
-            if (fadeTimeoutRef.current) {
-                clearTimeout(fadeTimeoutRef.current);
+            if (fadeIntervalRef.current) {
+                clearInterval(fadeIntervalRef.current);
             }
         };
     }, [cursorX, cursorY]);
@@ -74,7 +77,7 @@ export default function AuraCursor() {
     return (
         <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
             {/* Trail Line */}
-            {showTrail && (
+            {trailPoints.length > 1 && (
                 <svg className="absolute inset-0 w-full h-full">
                     <defs>
                         <linearGradient id="trailGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -83,30 +86,26 @@ export default function AuraCursor() {
                             <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
                         </linearGradient>
                     </defs>
-                    {trailPoints.length > 1 && (
-                        <path
-                            d={`M ${trailPoints.map((p, i) => `${p.x},${p.y}`).join(' L ')}`}
-                            stroke="url(#trailGradient)"
-                            strokeWidth="2"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            opacity={0.7}
-                        />
-                    )}
+                    <path
+                        d={`M ${trailPoints.map((p, i) => `${p.x},${p.y}`).join(' L ')}`}
+                        stroke="url(#trailGradient)"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        opacity={0.7}
+                    />
                     {/* Glow effect */}
-                    {trailPoints.length > 1 && (
-                        <path
-                            d={`M ${trailPoints.map((p, i) => `${p.x},${p.y}`).join(' L ')}`}
-                            stroke="#eab308"
-                            strokeWidth="4"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            opacity={0.3}
-                            filter="blur(4px)"
-                        />
-                    )}
+                    <path
+                        d={`M ${trailPoints.map((p, i) => `${p.x},${p.y}`).join(' L ')}`}
+                        stroke="#eab308"
+                        strokeWidth="4"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        opacity={0.3}
+                        filter="blur(4px)"
+                    />
                 </svg>
             )}
         </div>
