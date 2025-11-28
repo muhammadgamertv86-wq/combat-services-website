@@ -114,14 +114,27 @@ export default function CountryCard({ country }) {
                                         {country.touristSpots.map((spot, index) => (
                                             <div
                                                 key={index}
-                                                className="bg-slate-800/50 border border-slate-700 rounded-xl p-4 hover:border-gold-500/50 transition-colors"
+                                                className="bg-slate-800/50 border border-slate-700 rounded-xl overflow-hidden hover:border-gold-500/50 transition-colors group"
                                             >
-                                                <h4 className="text-lg font-semibold text-white mb-2">
-                                                    {spot.name}
-                                                </h4>
-                                                <p className="text-slate-400 text-sm">
-                                                    {spot.description}
-                                                </p>
+                                                {/* Image if available */}
+                                                {spot.image && (
+                                                    <div className="relative h-48 overflow-hidden">
+                                                        <img
+                                                            src={spot.image}
+                                                            alt={spot.name}
+                                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                        />
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60" />
+                                                    </div>
+                                                )}
+                                                <div className={spot.image ? 'p-4' : 'p-4'}>
+                                                    <h4 className="text-lg font-semibold text-white mb-2">
+                                                        {spot.name}
+                                                    </h4>
+                                                    <p className="text-slate-400 text-sm">
+                                                        {spot.description}
+                                                    </p>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>

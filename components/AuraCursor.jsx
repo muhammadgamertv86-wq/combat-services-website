@@ -9,43 +9,29 @@ export default function AuraCursor() {
     const cursorY = useMotionValue(-100);
 
     // Smooth spring physics for the cursor movement
-    const springConfig = { damping: 20, stiffness: 400, mass: 0.5 };
+    const springConfig = { damping: 25, stiffness: 500, mass: 0.5 };
     const cursorXSpring = useSpring(cursorX, springConfig);
     const cursorYSpring = useSpring(cursorY, springConfig);
 
-    // Particles state
-    const [particles, setParticles] = useState([]);
-    const particleId = useRef(0);
+    // Trail points state
+    const [trailPoints, setTrailPoints] = useState([]);
+    const trailLength = 20; // Number of trail segments
 
     useEffect(() => {
         const moveCursor = (e) => {
             cursorX.set(e.clientX);
             cursorY.set(e.clientY);
 
-            // Spawn sprinkles randomly on movement
-            if (Math.random() > 0.7) {
-                const id = particleId.current++;
-                const newParticle = {
-                    id,
+            // Add new point to trail
+            setTrailPoints(prev => {
+                const newPoint = {
                     x: e.clientX,
                     y: e.clientY,
-                    size: Math.random() * 3 + 2,
-                    color: Math.random() > 0.6 ? '#eab308' : '#ffffff', // Gold or White
-                    angle: Math.random() * 360,
-                    distance: Math.random() * 30 + 10
+                    id: Date.now() + Math.random()
                 };
-
-                setParticles(prev => {
-                    const updated = [...prev, newParticle];
-                    if (updated.length > 30) return updated.slice(-30); // Limit max particles
-                    return updated;
-                });
-
-                // Cleanup particle after animation
-                setTimeout(() => {
-                    setParticles(prev => prev.filter(p => p.id !== id));
-                }, 800);
-            }
+                const updated = [newPoint, ...prev];
+                return updated.slice(0, trailLength);
+            });
         };
 
         const handleMouseOver = (e) => {
@@ -68,6 +54,41 @@ export default function AuraCursor() {
 
     return (
         <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
+            {/* Trail Line */}
+            <svg className="absolute inset-0 w-full h-full">
+                <defs>
+                    <linearGradient id="trailGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#eab308" stopOpacity="0" />
+                        <stop offset="50%" stopColor="#eab308" stopOpacity="0.6" />
+                        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
+                    </linearGradient>
+                </defs>
+                {trailPoints.length > 1 && (
+                    <path
+                        d={`M ${trailPoints.map((p, i) => `${p.x},${p.y}`).join(' L ')}`}
+                        stroke="url(#trailGradient)"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        opacity={0.7}
+                    />
+                )}
+                {/* Glow effect */}
+                {trailPoints.length > 1 && (
+                    <path
+                        d={`M ${trailPoints.map((p, i) => `${p.x},${p.y}`).join(' L ')}`}
+                        stroke="#eab308"
+                        strokeWidth="4"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        opacity={0.3}
+                        filter="blur(4px)"
+                    />
+                )}
+            </svg>
+
             {/* Main Cursor Follower */}
             <motion.div
                 style={{ x: cursorXSpring, y: cursorYSpring }}
@@ -84,34 +105,6 @@ export default function AuraCursor() {
                     <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-gold-500/30 rounded-full transition-all duration-500 ${isHovering ? 'w-12 h-12 border-gold-400/60 bg-gold-500/5' : ''}`} />
                 </div>
             </motion.div>
-
-            {/* Sprinkles Particles */}
-            {particles.map(p => (
-                <div
-                    key={p.id}
-                    className="absolute rounded-full animate-sprinkle"
-                    style={{
-                        left: p.x,
-                        top: p.y,
-                        width: p.size,
-                        height: p.size,
-                        backgroundColor: p.color,
-                        '--tx': `${Math.cos(p.angle * Math.PI / 180) * p.distance}px`,
-                        '--ty': `${Math.sin(p.angle * Math.PI / 180) * p.distance}px`,
-                        boxShadow: `0 0 ${p.size * 2}px ${p.color}`
-                    }}
-                />
-            ))}
-
-            <style jsx global>{`
-        @keyframes sprinkle {
-          0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-          100% { transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); opacity: 0; }
-        }
-        .animate-sprinkle {
-          animation: sprinkle 0.8s ease-out forwards;
-        }
-      `}</style>
         </div>
     );
 }
