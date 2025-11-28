@@ -15,12 +15,28 @@ export default function AuraCursor() {
 
     // Trail points state
     const [trailPoints, setTrailPoints] = useState([]);
+    const [showTrail, setShowTrail] = useState(true);
     const trailLength = 20; // Number of trail segments
+    const fadeTimeoutRef = useRef(null);
 
     useEffect(() => {
         const moveCursor = (e) => {
             cursorX.set(e.clientX);
             cursorY.set(e.clientY);
+
+            // Show trail when moving
+            setShowTrail(true);
+
+            // Clear existing timeout
+            if (fadeTimeoutRef.current) {
+                clearTimeout(fadeTimeoutRef.current);
+            }
+
+            // Set new timeout to hide trail after 1 second
+            fadeTimeoutRef.current = setTimeout(() => {
+                setShowTrail(false);
+                setTrailPoints([]);
+            }, 1000);
 
             // Add new point to trail
             setTrailPoints(prev => {
@@ -49,45 +65,50 @@ export default function AuraCursor() {
         return () => {
             window.removeEventListener('mousemove', moveCursor);
             window.removeEventListener('mouseover', handleMouseOver);
+            if (fadeTimeoutRef.current) {
+                clearTimeout(fadeTimeoutRef.current);
+            }
         };
     }, [cursorX, cursorY]);
 
     return (
         <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
             {/* Trail Line */}
-            <svg className="absolute inset-0 w-full h-full">
-                <defs>
-                    <linearGradient id="trailGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#eab308" stopOpacity="0" />
-                        <stop offset="50%" stopColor="#eab308" stopOpacity="0.6" />
-                        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
-                    </linearGradient>
-                </defs>
-                {trailPoints.length > 1 && (
-                    <path
-                        d={`M ${trailPoints.map((p, i) => `${p.x},${p.y}`).join(' L ')}`}
-                        stroke="url(#trailGradient)"
-                        strokeWidth="2"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        opacity={0.7}
-                    />
-                )}
-                {/* Glow effect */}
-                {trailPoints.length > 1 && (
-                    <path
-                        d={`M ${trailPoints.map((p, i) => `${p.x},${p.y}`).join(' L ')}`}
-                        stroke="#eab308"
-                        strokeWidth="4"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        opacity={0.3}
-                        filter="blur(4px)"
-                    />
-                )}
-            </svg>
+            {showTrail && (
+                <svg className="absolute inset-0 w-full h-full">
+                    <defs>
+                        <linearGradient id="trailGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#eab308" stopOpacity="0" />
+                            <stop offset="50%" stopColor="#eab308" stopOpacity="0.6" />
+                            <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
+                        </linearGradient>
+                    </defs>
+                    {trailPoints.length > 1 && (
+                        <path
+                            d={`M ${trailPoints.map((p, i) => `${p.x},${p.y}`).join(' L ')}`}
+                            stroke="url(#trailGradient)"
+                            strokeWidth="2"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            opacity={0.7}
+                        />
+                    )}
+                    {/* Glow effect */}
+                    {trailPoints.length > 1 && (
+                        <path
+                            d={`M ${trailPoints.map((p, i) => `${p.x},${p.y}`).join(' L ')}`}
+                            stroke="#eab308"
+                            strokeWidth="4"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            opacity={0.3}
+                            filter="blur(4px)"
+                        />
+                    )}
+                </svg>
+            )}
         </div>
     );
 }
