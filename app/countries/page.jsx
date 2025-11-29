@@ -199,26 +199,26 @@ export default function CountriesPage() {
                                 )}
                             </>
                         ) : (
-                            /* No Results */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="text-center py-16"
-                        >
-                            <Search className="w-16 h-16 text-slate-600 mx-auto mb-4" />
-                            <h3 className="text-2xl font-heading font-bold text-white mb-2">
-                                No countries found
-                            </h3>
-                            <p className="text-slate-400 mb-6">
-                                Try adjusting your search query
-                            </p>
-                            <button
-                                onClick={clearSearch}
-                                className="btn-primary"
+                            /* No Results */
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="text-center py-16"
                             >
-                                Clear Search
-                            </button>
-                        </motion.div>
+                                <Search className="w-16 h-16 text-slate-600 mx-auto mb-4" />
+                                <h3 className="text-2xl font-heading font-bold text-white mb-2">
+                                    No countries found
+                                </h3>
+                                <p className="text-slate-400 mb-6">
+                                    Try adjusting your search query
+                                </p>
+                                <button
+                                    onClick={clearSearch}
+                                    className="btn-primary"
+                                >
+                                    Clear Search
+                                </button>
+                            </motion.div>
                         )}
                     </motion.section>
                 )}
