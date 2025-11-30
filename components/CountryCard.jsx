@@ -163,14 +163,23 @@ export default function CountryCard({ country }) {
                                 {/* CTA */}
                                 <div className="bg-gradient-to-r from-gold-500/10 to-gold-600/10 border border-gold-500/30 rounded-xl p-6 text-center">
                                     <h4 className="text-xl font-heading font-bold text-white mb-2">
-                                        Ready to Start Your Journey?
+                                        Want to Learn More?
                                     </h4>
-                                    <p className="text-slate-300 mb-4">
-                                        Contact us today for expert visa consultation for {country.name}
+                                    <p className="text-slate-300 mb-6">
+                                        View complete visa requirements, processing times, and application steps
                                     </p>
-                                    <button className="btn-primary">
-                                        Get Free Consultation
-                                    </button>
+                                    <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                                        <a
+                                            href={`/countries/${country.id}`}
+                                            className="btn-primary"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            View Full Details
+                                        </a>
+                                        <button className="btn-secondary">
+                                            Get Free Consultation
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
