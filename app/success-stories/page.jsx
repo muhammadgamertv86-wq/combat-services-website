@@ -1,21 +1,103 @@
-import Hero from '@/components/Hero';
+'use client';
+
+import { motion } from 'framer-motion';
 import TestimonialCard from '@/components/TestimonialCard';
 import { TESTIMONIALS, BUSINESS_INFO } from '@/lib/constants';
-import { Award, Users, Globe, TrendingUp } from 'lucide-react';
-
-export const metadata = {
-    title: 'Success Stories',
-    description: `Read success stories from our satisfied clients. ${BUSINESS_INFO.stats.totalVisas}+ visas approved with ${BUSINESS_INFO.stats.successRate}% success rate.`,
-};
+import { Award, Users, Globe, TrendingUp, Trophy, Star } from 'lucide-react';
 
 export default function SuccessStoriesPage() {
     return (
         <>
-            <Hero
-                title="Success Stories"
-                subtitle="Real stories from real clients who achieved their visa goals with Combat Services"
-                primaryCTA={{ text: 'Share Your Story', href: '/contact' }}
-            />
+            {/* Unique Success Stories Hero */}
+            <section className="min-h-[70vh] pt-32 pb-20 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-background-dark via-slate-900 to-background-dark">
+                    <div className="absolute inset-0 opacity-10">
+                        <div className="absolute top-10 left-1/3 w-80 h-80 bg-gold-500 rounded-full blur-3xl animate-pulse"></div>
+                        <div className="absolute bottom-10 right-1/3 w-72 h-72 bg-gold-600 rounded-full blur-3xl animate-pulse delay-700"></div>
+                    </div>
+                </div>
+
+                <div className="container-custom relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="max-w-5xl mx-auto text-center"
+                    >
+                        {/* Icon */}
+                        <motion.div
+                            initial={{ scale: 0, y: -50 }}
+                            animate={{ scale: 1, y: 0 }}
+                            transition={{ delay: 0.2, type: "spring", bounce: 0.5 }}
+                            className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-gold-500 to-gold-600 mb-8 relative"
+                        >
+                            <Trophy className="w-12 h-12 text-white" />
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ delay: 0.5 }}
+                                className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-gold-400 flex items-center justify-center"
+                            >
+                                <Star className="w-5 h-5 text-white fill-white" />
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Title */}
+                        <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6">
+                            Success
+                            <span className="block text-gradient-gold mt-2">Stories</span>
+                        </h1>
+
+                        {/* Subtitle */}
+                        <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed">
+                            Real stories from real clients who achieved their visa goals with Combat Services
+                        </p>
+
+                        {/* Stats Grid */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.4 }}
+                                className="glass-card p-6"
+                            >
+                                <TrendingUp className="w-8 h-8 text-gold-500 mx-auto mb-2" />
+                                <div className="text-3xl font-bold text-white mb-1">{BUSINESS_INFO.stats.successRate}%</div>
+                                <div className="text-sm text-slate-400">Success Rate</div>
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.5 }}
+                                className="glass-card p-6"
+                            >
+                                <Award className="w-8 h-8 text-gold-500 mx-auto mb-2" />
+                                <div className="text-3xl font-bold text-white mb-1">{(BUSINESS_INFO.stats.totalVisas / 1000).toFixed(0)}K+</div>
+                                <div className="text-sm text-slate-400">Visas Approved</div>
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.6 }}
+                                className="glass-card p-6"
+                            >
+                                <Users className="w-8 h-8 text-gold-500 mx-auto mb-2" />
+                                <div className="text-3xl font-bold text-white mb-1">15K+</div>
+                                <div className="text-sm text-slate-400">Happy Clients</div>
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.7 }}
+                                className="glass-card p-6"
+                            >
+                                <Globe className="w-8 h-8 text-gold-500 mx-auto mb-2" />
+                                <div className="text-3xl font-bold text-white mb-1">{BUSINESS_INFO.stats.countriesCovered}+</div>
+                                <div className="text-sm text-slate-400">Countries</div>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
 
             {/* Stats Section */}
             <section className="section-padding bg-gradient-to-br from-primary-dark to-primary text-white">

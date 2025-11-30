@@ -1,21 +1,92 @@
-import Hero from '@/components/Hero';
+'use client';
+
+import { motion } from 'framer-motion';
 import ContactForm from '@/components/ContactForm';
 import { BUSINESS_INFO } from '@/lib/constants';
-import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
-
-export const metadata = {
-    title: 'Contact Us',
-    description: `Get in touch with ${BUSINESS_INFO.name} for visa consultancy services. Visit our office in Rawalpindi or contact us via phone, email, or WhatsApp.`,
-};
+import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from 'lucide-react';
 
 export default function ContactPage() {
     return (
         <>
-            <Hero
-                title="Get in Touch"
-                subtitle="Ready to start your visa journey? Contact our expert consultants today for a free consultation"
-                primaryCTA={{ text: 'Call Us Now', href: `tel:${BUSINESS_INFO.contact.phone}` }}
-            />
+            {/* Unique Contact Hero */}
+            <section className="min-h-[70vh] pt-32 pb-20 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-background-dark via-slate-800 to-background-dark">
+                    <div className="absolute inset-0 opacity-10">
+                        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gold-500 rounded-full blur-3xl animate-pulse"></div>
+                        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gold-600 rounded-full blur-3xl animate-pulse delay-500"></div>
+                    </div>
+                </div>
+
+                <div className="container-custom relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="max-w-4xl mx-auto text-center"
+                    >
+                        {/* Icon */}
+                        <motion.div
+                            initial={{ scale: 0, rotate: -180 }}
+                            animate={{ scale: 1, rotate: 0 }}
+                            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                            className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-gold-500 to-gold-600 mb-8"
+                        >
+                            <Send className="w-10 h-10 text-white" />
+                        </motion.div>
+
+                        {/* Title */}
+                        <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6">
+                            Get in
+                            <span className="block text-gradient-gold mt-2">Touch</span>
+                        </h1>
+
+                        {/* Subtitle */}
+                        <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed">
+                            Ready to start your visa journey? Contact our expert consultants today for a free consultation
+                        </p>
+
+                        {/* Quick Contact Options */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+                            <motion.a
+                                href={`tel:${BUSINESS_INFO.contact.phone}`}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4 }}
+                                className="glass-card p-6 hover:border-gold-500/50 transition-all group"
+                            >
+                                <Phone className="w-8 h-8 text-gold-500 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                                <div className="text-sm text-slate-400 mb-1">Call Us</div>
+                                <div className="text-white font-semibold text-sm">{BUSINESS_INFO.contact.phone}</div>
+                            </motion.a>
+
+                            <motion.a
+                                href={`mailto:${BUSINESS_INFO.contact.email}`}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5 }}
+                                className="glass-card p-6 hover:border-gold-500/50 transition-all group"
+                            >
+                                <Mail className="w-8 h-8 text-gold-500 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                                <div className="text-sm text-slate-400 mb-1">Email Us</div>
+                                <div className="text-white font-semibold text-sm truncate">{BUSINESS_INFO.contact.email}</div>
+                            </motion.a>
+
+                            <motion.a
+                                href={`https://wa.me/${BUSINESS_INFO.contact.whatsapp.replace(/[^0-9]/g, '')}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.6 }}
+                                className="glass-card p-6 hover:border-gold-500/50 transition-all group"
+                            >
+                                <MessageCircle className="w-8 h-8 text-gold-500 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                                <div className="text-sm text-slate-400 mb-1">WhatsApp</div>
+                                <div className="text-white font-semibold text-sm">Chat Now</div>
+                            </motion.a>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
 
             {/* Contact Information Cards */}
             <section className="section-padding bg-white">
