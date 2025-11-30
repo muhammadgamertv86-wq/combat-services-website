@@ -167,7 +167,7 @@ export default function CountryDetailPage() {
                     >
                         <DollarSign className="w-12 h-12 text-gold-500 mx-auto mb-4" />
                         <h3 className="text-xl font-heading font-bold text-white mb-2">Service Fee</h3>
-                        <p className="text-slate-300">Starting from PKR 15,000</p>
+                        <p className="text-slate-300">Starting from PKR 50,000</p>
                         <p className="text-sm text-slate-400 mt-2">Varies by visa type</p>
                     </motion.div>
 
