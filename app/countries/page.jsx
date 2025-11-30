@@ -49,7 +49,7 @@ export default function CountriesPage() {
     return (
         <div className="min-h-screen pt-24 pb-16">
             {/* Hero Section */}
-            <section className="container-custom mb-16">
+            <section className="container-custom mb-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -74,7 +74,7 @@ export default function CountriesPage() {
             </section>
 
             {/* Global Search Bar */}
-            <section className="container-custom mb-12">
+            <section className="container-custom mb-16">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
