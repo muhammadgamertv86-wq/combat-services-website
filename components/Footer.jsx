@@ -13,10 +13,15 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand Column */}
                     <div>
-                        <Link href="/" className="inline-block mb-6">
-                            <h2 className="text-2xl font-heading font-bold text-white">
-                                COMBAT <span className="text-gold-500">SERVICES</span>
-                            </h2>
+                        <Link href="/" className="inline-block mb-6 group">
+                            <div className="flex items-center gap-3">
+                                <div className="w-12 h-12 rounded-full overflow-hidden border border-slate-700 group-hover:border-gold-500/50 transition-colors">
+                                    <img src="/images/logo.png" alt="Combat Services" className="w-full h-full object-cover" />
+                                </div>
+                                <h2 className="text-2xl font-heading font-bold text-white">
+                                    COMBAT <span className="text-gold-500">SERVICES</span>
+                                </h2>
+                            </div>
                         </Link>
                         <p className="text-slate-400 mb-6 leading-relaxed">
                             Leading visa consultancy specializing in student visas, immigration, and tourist visas with a 98% success rate.
