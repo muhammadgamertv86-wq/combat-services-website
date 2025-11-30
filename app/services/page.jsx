@@ -1,23 +1,100 @@
-import Hero from '@/components/Hero';
+'use client';
+
+import { motion } from 'framer-motion';
 import ServiceCard from '@/components/ServiceCard';
 import ProcessSteps from '@/components/ProcessSteps';
 import { SERVICES, PROCESS_STEPS } from '@/lib/constants';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle, ArrowRight, Briefcase, Award, Users } from 'lucide-react';
 import Link from 'next/link';
-
-export const metadata = {
-    title: 'Our Services',
-    description: 'Comprehensive visa services including student visas, immigration visas, and tourist visas with expert guidance and 98% success rate.',
-};
 
 export default function ServicesPage() {
     return (
         <>
-            <Hero
-                title="Comprehensive Visa Services"
-                subtitle="Expert guidance for all your visa needs - from student visas to permanent immigration"
-                primaryCTA={{ text: 'Book Consultation', href: '/contact' }}
-            />
+            {/* Unique Services Hero */}
+            <section className="min-h-[70vh] pt-32 pb-20 relative overflow-hidden">
+                {/* Animated Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-background-dark via-slate-900 to-background-dark">
+                    <div className="absolute inset-0 opacity-10">
+                        <div className="absolute top-20 left-10 w-72 h-72 bg-gold-500 rounded-full blur-3xl animate-pulse"></div>
+                        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold-600 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                    </div>
+                </div>
+
+                <div className="container-custom relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="max-w-4xl mx-auto text-center"
+                    >
+                        {/* Icon */}
+                        <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ delay: 0.2, type: "spring" }}
+                            className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-gold-500 to-gold-600 mb-8"
+                        >
+                            <Briefcase className="w-10 h-10 text-white" />
+                        </motion.div>
+
+                        {/* Title */}
+                        <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6">
+                            Comprehensive
+                            <span className="block text-gradient-gold mt-2">Visa Services</span>
+                        </h1>
+
+                        {/* Subtitle */}
+                        <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed">
+                            Expert guidance for all your visa needs - from student visas to permanent immigration
+                        </p>
+
+                        {/* Stats */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4 }}
+                                className="glass-card p-6"
+                            >
+                                <Award className="w-8 h-8 text-gold-500 mx-auto mb-3" />
+                                <div className="text-3xl font-bold text-white mb-1">98%</div>
+                                <div className="text-slate-400">Success Rate</div>
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5 }}
+                                className="glass-card p-6"
+                            >
+                                <Users className="w-8 h-8 text-gold-500 mx-auto mb-3" />
+                                <div className="text-3xl font-bold text-white mb-1">5000+</div>
+                                <div className="text-slate-400">Happy Clients</div>
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.6 }}
+                                className="glass-card p-6"
+                            >
+                                <Briefcase className="w-8 h-8 text-gold-500 mx-auto mb-3" />
+                                <div className="text-3xl font-bold text-white mb-1">15+</div>
+                                <div className="text-slate-400">Years Experience</div>
+                            </motion.div>
+                        </div>
+
+                        {/* CTA */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.7 }}
+                        >
+                            <Link href="/contact" className="btn-primary text-lg px-8 py-4">
+                                Book Free Consultation
+                            </Link>
+                        </motion.div>
+                    </motion.div>
+                </div>
+            </section>
 
             {/* Services Overview */}
             <section className="section-padding bg-white">
