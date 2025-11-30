@@ -73,62 +73,70 @@ export default function CountriesPage() {
                 </motion.div>
             </section>
 
-            {/* Back Button & Search (when continent is selected) */}
+            {/* Global Search Bar */}
+            <section className="container-custom mb-12">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="max-w-2xl mx-auto"
+                >
+                    <div className="relative">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <input
+                            type="text"
+                            placeholder="Search any country across all continents..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full pl-12 pr-12 py-4 bg-surface-dark/50 border-2 border-gold-500/20 rounded-full text-white placeholder-slate-400 focus:border-gold-500 focus:outline-none transition-colors text-lg"
+                        />
+                        {searchQuery && (
+                            <button
+                                onClick={clearSearch}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                        )}
+                    </div>
+
+                    {/* Search Results Info */}
+                    {searchQuery && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="mt-4 text-center text-slate-300 text-sm"
+                        >
+                            Found {filteredCountries.length} {filteredCountries.length === 1 ? 'country' : 'countries'} matching "{searchQuery}"
+                        </motion.div>
+                    )}
+                </motion.div>
+            </section>
+
+            {/* Back Button (when continent is selected) */}
             <AnimatePresence>
                 {selectedContinent && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
                         className="container-custom mb-8"
                     >
-                        <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-                            <button
-                                onClick={() => setSelectedContinent(null)}
-                                className="flex items-center gap-2 text-gold-400 hover:text-gold-300 transition-colors group"
-                            >
-                                <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                                <span className="font-medium">Back to Continents</span>
-                            </button>
-
-                            {/* Search Bar */}
-                            <div className="relative w-full sm:w-96">
-                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                                <input
-                                    type="text"
-                                    placeholder="Search countries..."
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-12 pr-12 py-3 bg-surface-dark/50 border-2 border-gold-500/20 rounded-full text-white placeholder-slate-400 focus:border-gold-500 focus:outline-none transition-colors"
-                                />
-                                {searchQuery && (
-                                    <button
-                                        onClick={clearSearch}
-                                        className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors"
-                                    >
-                                        <X className="w-5 h-5" />
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* Search Results Info */}
-                        {searchQuery && (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                className="mt-4 text-slate-300 text-sm"
-                            >
-                                Found {filteredCountries.length} {filteredCountries.length === 1 ? 'country' : 'countries'} matching "{searchQuery}"
-                            </motion.div>
-                        )}
+                        <button
+                            onClick={() => setSelectedContinent(null)}
+                            className="flex items-center gap-2 text-gold-400 hover:text-gold-300 transition-colors group"
+                        >
+                            <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                            <span className="font-medium">Back to Continents</span>
+                        </button>
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            {/* Continents Grid (when no continent is selected) */}
+            {/* Continents Grid or Search Results */}
             <AnimatePresence mode="wait">
-                {!selectedContinent ? (
+                {!selectedContinent && !searchQuery ? (
+                    /* Continents Grid (when no continent selected and no search) */
                     <motion.section
                         key="continents"
                         initial={{ opacity: 0 }}
