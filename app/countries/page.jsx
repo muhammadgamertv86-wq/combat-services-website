@@ -74,7 +74,7 @@ export default function CountriesPage() {
             </section>
 
             {/* Global Search Bar */}
-            <section className="container-custom mb-24 mt-12">
+            <section className="container-custom mb-40 mt-12">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
