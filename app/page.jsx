@@ -34,11 +34,11 @@ export default function HomePage() {
                 secondaryCTA={{ text: 'Explore Services', href: '/services' }}
             />
 
-            {/* Stats Counter */}
-            <StatsCounter />
-
             {/* Scrolling Marquee */}
             <Marquee />
+
+            {/* Stats Counter */}
+            <StatsCounter />
 
             {/* Services Section */}
             <section className="section-padding bg-white">
