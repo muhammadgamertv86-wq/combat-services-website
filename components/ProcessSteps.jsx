@@ -29,7 +29,7 @@ export default function ProcessSteps({ steps }) {
                             Our Simple Process
                         </h2>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                            We've streamlined the visa application process to make it as smooth and stress-free as possible
+                            We&apos;ve simplified the visa application process into clear, manageable steps.
                         </p>
                     </div>
 

@@ -40,7 +40,8 @@ export default function AboutPage() {
                                 </h1>
 
                                 <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-                                    Your trusted partner for visa success with over 15 years of experience helping thousands achieve their international dreams
+                                    We&apos;re more than just consultants; we&apos;re your partners in success.
+                                    with over 15 years of experience helping thousands achieve their international dreams
                                 </p>
 
                                 <div className="flex items-center gap-3 justify-center md:justify-start">
@@ -107,16 +108,16 @@ export default function AboutPage() {
                             </h2>
                             <div className="space-y-4 text-gray-600 leading-relaxed">
                                 <p>
-                                    Founded in Rawalpindi, Pakistan, Combat Services has been a beacon of hope for thousands of individuals and families seeking to pursue their dreams abroad. With over 15 years of dedicated service in the visa consultancy industry, we have built a reputation for excellence, integrity, and unwavering commitment to our clients' success.
+                                    Founded in Rawalpindi, Pakistan, Combat Services has been a beacon of hope for thousands of individuals and families seeking to pursue their dreams abroad. With over 15 years of dedicated service in the visa consultancy industry, we have built a reputation for excellence, integrity, and unwavering commitment to our clients&apos; success.
                                 </p>
                                 <p>
-                                    Our journey began with a simple mission: to make the complex visa application process simple, transparent, and successful for everyone. Today, with over 20,000 visas approved and a 98% success rate, we stand as one of Pakistan's most trusted visa consultancy firms.
+                                    Our journey began with a simple mission: to make the complex visa application process simple, transparent, and successful for everyone. Today, with over 20,000 visas approved and a 98% success rate, we stand as one of Pakistan&apos;s most trusted visa consultancy firms.
                                 </p>
                                 <p>
-                                    What sets us apart is our personalized approach. We understand that every client's situation is unique, and we tailor our services to meet individual needs. Our team of experienced consultants stays updated with the latest immigration policies and requirements across 50+ countries, ensuring you receive accurate and timely guidance.
+                                    What sets us apart is our personalized approach. We understand that every client&apos;s situation is unique, and we tailor our services to meet individual needs. Our team of experienced consultants stays updated with the latest immigration policies and requirements across 50+ countries, ensuring you receive accurate and timely guidance.
                                 </p>
                                 <p>
-                                    Whether you're a student aspiring to study at a world-class university, a professional seeking better opportunities abroad, or a family planning to reunite with loved ones, Combat Services is here to turn your international dreams into reality.
+                                    Whether you&apos;re a student aspiring to study at a world-class university, a professional seeking better opportunities abroad, or a family planning to reunite with loved ones, Combat Services is here to turn your international dreams into reality.
                                 </p>
                             </div>
                         </div>
@@ -167,7 +168,7 @@ export default function AboutPage() {
                             </div>
                             <h3 className="text-2xl font-heading font-bold text-gray-900 mb-4">Our Vision</h3>
                             <p className="text-gray-600 leading-relaxed">
-                                To be Pakistan's most trusted and respected visa consultancy firm, recognized for our unwavering commitment to client success, ethical practices, and contribution to connecting people with global opportunities. We envision a future where borders are bridges, not barriers.
+                                To be Pakistan&apos;s most trusted and respected visa consultancy firm, recognized for our unwavering commitment to client success, ethical practices, and contribution to connecting people with global opportunities. We envision a future where borders are bridges, not barriers.
                             </p>
                         </div>
                     </div>
@@ -238,7 +239,7 @@ export default function AboutPage() {
                                 Visit Our Office
                             </h2>
                             <p className="text-lg text-gray-100">
-                                Located in the heart of Rawalpindi, we're here to serve you
+                                Located in the heart of Rawalpindi, we&apos;re here to serve you
                             </p>
                         </div>
 

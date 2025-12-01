@@ -58,7 +58,7 @@ export default function ContactForm() {
                 {/* Name */}
                 <div>
                     <label htmlFor="name" className="form-label">
-                        Full Name *
+                        We&apos;ll get back to you within 24 hours
                     </label>
                     <input
                         {...register('name')}
@@ -171,7 +171,7 @@ export default function ContactForm() {
                         className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800"
                     >
                         <CheckCircle size={20} />
-                        <p className="font-medium">Message sent successfully! We'll get back to you soon.</p>
+                        <p className="font-medium">Message sent successfully! We&apos;ll get back to you soon.</p>
                     </motion.div>
                 )}
 

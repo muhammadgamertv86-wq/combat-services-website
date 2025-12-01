@@ -4,6 +4,7 @@ import ServiceCard from '@/components/ServiceCard';
 import TestimonialCard from '@/components/TestimonialCard';
 import ProcessSteps from '@/components/ProcessSteps';
 import ContactForm from '@/components/ContactForm';
+import Marquee from '@/components/Marquee';
 import { SERVICES, TESTIMONIALS, PROCESS_STEPS, WHY_CHOOSE_US, BUSINESS_INFO } from '@/lib/constants';
 import { TrendingUp, Award, Users, Heart, Shield, Zap } from 'lucide-react';
 import Link from 'next/link';
@@ -35,6 +36,9 @@ export default function HomePage() {
 
             {/* Stats Counter */}
             <StatsCounter />
+
+            {/* Scrolling Marquee */}
+            <Marquee />
 
             {/* Services Section */}
             <section className="section-padding bg-white">

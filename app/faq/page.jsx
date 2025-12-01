@@ -109,7 +109,8 @@ export default function FAQPage() {
                             Still Have Questions?
                         </h2>
                         <p className="text-lg text-gray-600 mb-8">
-                            Can't find the answer you're looking for? Our expert consultants are here to help. Book a free consultation or send us a message.
+                            Can&apos;t find what you&apos;re looking for?
+                            Our expert consultants are here to help. Book a free consultation or send us a message.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link href="/contact" className="btn btn-primary btn-large">

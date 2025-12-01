@@ -17,26 +17,29 @@ export default function AuraCursor() {
     const [trailPoints, setTrailPoints] = useState([]);
     const trailLength = 20; // Number of trail segments
     const fadeIntervalRef = useRef(null);
-    const lastMoveTimeRef = useRef(Date.now());
+    const lastMoveTimeRef = useRef(0);
 
     useEffect(() => {
         const moveCursor = (e) => {
             cursorX.set(e.clientX);
             cursorY.set(e.clientY);
 
-            // Update last move time
-            lastMoveTimeRef.current = Date.now();
+            // Update last move time using event timestamp
+            lastMoveTimeRef.current = e.timeStamp;
 
             // Add new point to trail
             setTrailPoints(prev => {
                 const newPoint = {
                     x: e.clientX,
                     y: e.clientY,
-                    id: Date.now() + Math.random()
+                    id: e.timeStamp + Math.random()
                 };
                 const updated = [newPoint, ...prev];
                 return updated.slice(0, trailLength);
             });
+
+            // Fade interval uses performance.now for current time
+            // (no change needed here, will adjust below)
         };
 
         const handleMouseOver = (e) => {
@@ -50,7 +53,7 @@ export default function AuraCursor() {
 
         // Fade out trail gradually when not moving
         fadeIntervalRef.current = setInterval(() => {
-            const timeSinceLastMove = Date.now() - lastMoveTimeRef.current;
+            const timeSinceLastMove = performance.now() - lastMoveTimeRef.current;
 
             // If mouse hasn't moved for 100ms, start removing points from the end
             if (timeSinceLastMove > 100) {

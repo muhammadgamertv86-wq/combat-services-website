@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
 import { fadeInUp, fadeInDown } from '@/lib/animations';
 import { ArrowRight, Star } from 'lucide-react';
 import Link from 'next/link';
+import TypewriterEffect from './TypewriterEffect';
+import WorldMap from './WorldMap';
+import MagneticButton from './MagneticButton';
 
 export default function Hero({
     title,
@@ -19,6 +22,7 @@ export default function Hero({
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold-500/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
                 <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4" />
+                <WorldMap className="absolute inset-0 opacity-40 mix-blend-soft-light pointer-events-none" />
             </div>
 
             <div className="container-custom relative z-10">
@@ -36,7 +40,11 @@ export default function Hero({
 
                         <h1 className="text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-white leading-[1.1] mb-8">
                             Your Gateway to <br />
-                            <span className="text-gradient-gold">Global Opportunities</span>
+                            <TypewriterEffect
+                                words={["Global Opportunities", "Dream Universities", "International Careers", "New Beginnings"]}
+                                className="text-gradient-gold"
+                                cursorClassName="bg-gold-500"
+                            />
                         </h1>
                     </motion.div>
 
@@ -60,21 +68,25 @@ export default function Hero({
                         className="flex flex-wrap gap-6"
                     >
                         {primaryCTA && (
-                            <Link
-                                href={primaryCTA.href}
-                                className="btn btn-primary text-lg"
-                            >
-                                {primaryCTA.text}
-                                <ArrowRight className="ml-2" size={20} />
-                            </Link>
+                            <MagneticButton>
+                                <Link
+                                    href={primaryCTA.href}
+                                    className="btn btn-primary text-lg"
+                                >
+                                    {primaryCTA.text}
+                                    <ArrowRight className="ml-2" size={20} />
+                                </Link>
+                            </MagneticButton>
                         )}
                         {secondaryCTA && (
-                            <Link
-                                href={secondaryCTA.href}
-                                className="btn btn-outline text-lg px-8"
-                            >
-                                {secondaryCTA.text}
-                            </Link>
+                            <MagneticButton>
+                                <Link
+                                    href={secondaryCTA.href}
+                                    className="btn btn-outline text-lg px-8"
+                                >
+                                    {secondaryCTA.text}
+                                </Link>
+                            </MagneticButton>
                         )}
                     </motion.div>
                 </div>

@@ -63,7 +63,7 @@ export default function CountriesPage() {
                     </div>
                     <p className="text-xl text-slate-300 mb-8">
                         {selectedContinent
-                            ? `Discover amazing destinations in ${selectedContinent}`
+                            ? `Explore the world&apos;s most exciting destinations in ${selectedContinent}`
                             : 'Choose a continent to discover your dream destination'}
                     </p>
                     <div className="flex items-center justify-center gap-2 text-gold-400">
@@ -107,7 +107,7 @@ export default function CountriesPage() {
                             animate={{ opacity: 1 }}
                             className="mt-4 text-center text-slate-300 text-sm"
                         >
-                            Found {filteredCountries.length} {filteredCountries.length === 1 ? 'country' : 'countries'} matching "{searchQuery}"
+                            Found {filteredCountries.length} {filteredCountries.length === 1 ? 'country' : 'countries'} matching &quot;{searchQuery}&quot;
                         </motion.div>
                     )}
                 </motion.div>
@@ -177,6 +177,7 @@ export default function CountriesPage() {
                                     {displayedCountries.map((country, index) => (
                                         <motion.div
                                             key={country.id}
+                                            title={`"${country.tagline}"`}
                                             initial={{ opacity: 0, scale: 0.9 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             transition={{ delay: index * 0.05 }}
@@ -241,7 +242,7 @@ export default function CountriesPage() {
                     className="glass-card p-8 text-center"
                 >
                     <h2 className="text-3xl font-heading font-bold text-white mb-4">
-                        Can't Find Your Destination?
+                        Can&apos;t find the country you&apos;re looking for?
                     </h2>
                     <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
                         We provide visa services for many more countries! Contact us to discuss your specific destination and visa requirements.

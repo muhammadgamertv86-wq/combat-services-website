@@ -1,9 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, GraduationCap, Plane, Palmtree } from 'lucide-react';
+import { fadeInUp, scaleIn } from '@/lib/animations';
+import { ArrowRight, GraduationCap, Globe, Briefcase, Plane, FileCheck, Building2, Palmtree } from 'lucide-react';
 import Link from 'next/link';
-import { scaleIn } from '@/lib/animations';
+import TiltCard from './TiltCard';
 
 const iconMap = {
     GraduationCap,
@@ -27,19 +28,19 @@ export default function ServiceCard({ service, index = 0 }) {
     ];
 
     return (
-        <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={scaleIn}
-            transition={{ delay: index * 0.1 }}
-            whileHover={{ y: -12, scale: 1.02 }}
-            className={`bg-gradient-to-br ${gradients[index % 3]} p-[2px] rounded-2xl group cursor-pointer h-full`}
-        >
-            <div className="bg-slate-900 rounded-2xl p-8 h-full flex flex-col hover:bg-slate-800/90 transition-all">
+        <TiltCard className="h-full">
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={fadeInUp}
+                transition={{ delay: index * 0.1 }}
+                className="group relative h-full bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 overflow-hidden"
+            >
                 {/* Icon */}
                 <div className="mb-6">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[index % 3]} text-white shadow-lg ${glowColors[index % 3]} group-hover:shadow-xl transition-all group-hover:scale-110 group-hover:rotate-6`}>
+                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[index % 3]} text-white shadow-lg ${glowColors[index % 3]} group-hover:shadow-xl transition-all group-hover:scale-110 group-hover:rotate-6`}
+                    >
                         <Icon size={32} />
                     </div>
                 </div>
@@ -60,7 +61,7 @@ export default function ServiceCard({ service, index = 0 }) {
                 >
                     Learn More <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
-            </div>
-        </motion.div>
+            </motion.div>
+        </TiltCard>
     );
 }
