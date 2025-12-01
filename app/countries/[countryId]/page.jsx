@@ -4,6 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Globe, Plane, CheckCircle, Clock, DollarSign, FileText, Mail, Phone } from 'lucide-react';
 import { COUNTRIES_DATA } from '@/lib/countriesData';
+import { BUSINESS_INFO } from '@/lib/constants';
 import Image from 'next/image';
 
 export default function CountryDetailPage() {
@@ -239,11 +240,11 @@ export default function CountryDetailPage() {
                             Contact Us Now
                         </button>
                         <a
-                            href="tel:+923001234567"
+                            href={`tel:${BUSINESS_INFO.contact.phone}`}
                             className="btn-secondary text-lg px-8 py-4"
                         >
                             <Phone className="w-5 h-5" />
-                            Call: +92 300 1234567
+                            Call: {BUSINESS_INFO.contact.phone}
                         </a>
                     </div>
                 </motion.div>
