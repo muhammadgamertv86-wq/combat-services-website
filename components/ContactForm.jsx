@@ -99,7 +99,7 @@ export default function ContactForm() {
                         type="tel"
                         id="phone"
                         className={`form-input ${errors.phone ? 'error' : ''}`}
-                        placeholder="+92-XXX-XXXXXXX"
+                        placeholder="+92-333-5101981"
                     />
                     {errors.phone && (
                         <p className="form-error">{errors.phone.message}</p>
