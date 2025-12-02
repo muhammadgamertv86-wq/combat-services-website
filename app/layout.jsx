@@ -69,13 +69,13 @@ export const metadata = {
 
 import AuraCursor from '@/components/AuraCursor';
 
-import ScrollProgress from '@/components/ScrollProgress';
+
 
 export default function RootLayout({ children }) {
     return (
         <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
             <body className="bg-background text-text antialiased selection:bg-gold-500/30 selection:text-gold-200" suppressHydrationWarning>
-                <ScrollProgress />
+
                 <AuraCursor />
                 <Navigation />
                 <main className="relative z-10 min-h-screen flex flex-col">
