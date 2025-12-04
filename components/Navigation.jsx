@@ -35,7 +35,7 @@ export default function Navigation() {
                         <MagneticLogo />
                         <div className="flex flex-col">
                             <h1 className="font-heading font-bold text-xl tracking-wide text-white group-hover:text-gold-400 transition-colors">
-                                COMBAT INTERNATIONAL
+                                COMBAT SERVICES
                             </h1>
                             <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400 group-hover:text-slate-300 transition-colors">
                                 Premium Visa Consultancy

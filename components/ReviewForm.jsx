@@ -208,7 +208,7 @@ export default function ReviewForm() {
                                 required
                                 rows={5}
                                 className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-gold-500 transition-colors resize-none"
-                                placeholder="Share your experience with Combat International..."
+                                placeholder="Share your experience with Combat Services..."
                             />
                         </div>
 

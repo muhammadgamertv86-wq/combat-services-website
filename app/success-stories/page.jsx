@@ -50,7 +50,7 @@ export default function SuccessStoriesPage() {
 
                         {/* Subtitle */}
                         <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed">
-                            Real stories from real clients who achieved their visa goals with Combat International
+                            Real stories from real clients who achieved their visa goals with Combat Services
                         </p>
 
                         {/* Stats Grid */}
@@ -230,7 +230,7 @@ export default function SuccessStoriesPage() {
                             Ready to Write Your Success Story?
                         </h2>
                         <p className="text-lg text-gray-100 mb-8">
-                            Join thousands of satisfied clients who achieved their visa goals with Combat International
+                            Join thousands of satisfied clients who achieved their visa goals with Combat Services
                         </p>
                         <a href="/contact" className="btn bg-white text-secondary hover:bg-gray-100 btn-large">
                             Start Your Journey Today

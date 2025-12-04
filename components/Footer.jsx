@@ -16,10 +16,10 @@ export default function Footer() {
                         <Link href="/" className="inline-block mb-6 group">
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-full overflow-hidden border border-slate-700 group-hover:border-gold-500/50 transition-colors">
-                                    <img src="/images/logo.png" alt="Combat International" className="w-full h-full object-cover" />
+                                    <img src="/images/logo.png" alt="Combat Services" className="w-full h-full object-cover" />
                                 </div>
                                 <h2 className="text-2xl font-heading font-bold text-white">
-                                    COMBAT <span className="text-gold-500">INTERNATIONAL</span>
+                                    COMBAT <span className="text-gold-500">SERVICES</span>
                                 </h2>
                             </div>
                         </Link>
@@ -89,7 +89,7 @@ export default function Footer() {
                 </div>
 
                 <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-                    <p>&copy; {currentYear} Combat International. All rights reserved.</p>
+                    <p>&copy; {currentYear} Combat Services. All rights reserved.</p>
                     <div className="flex gap-6">
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>

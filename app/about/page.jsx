@@ -36,7 +36,7 @@ export default function AboutPage() {
 
                                 <h1 className="text-5xl md:text-6xl font-heading font-bold text-white mb-6">
                                     About
-                                    <span className="block text-gradient-gold mt-2">Combat International</span>
+                                    <span className="block text-gradient-gold mt-2">Combat Services</span>
                                 </h1>
 
                                 <p className="text-xl text-slate-300 mb-8 leading-relaxed">
@@ -108,7 +108,7 @@ export default function AboutPage() {
                             </h2>
                             <div className="space-y-4 text-gray-600 leading-relaxed">
                                 <p>
-                                    Founded in Rawalpindi, Pakistan, Combat International has been a beacon of hope for thousands of individuals and families seeking to pursue their dreams abroad. With over 15 years of dedicated service in the visa consultancy industry, we have built a reputation for excellence, integrity, and unwavering commitment to our clients&apos; success.
+                                    Founded in Rawalpindi, Pakistan, Combat Services has been a beacon of hope for thousands of individuals and families seeking to pursue their dreams abroad. With over 15 years of dedicated service in the visa consultancy industry, we have built a reputation for excellence, integrity, and unwavering commitment to our clients&apos; success.
                                 </p>
                                 <p>
                                     Our journey began with a simple mission: to make the complex visa application process simple, transparent, and successful for everyone. Today, with over 20,000 visas approved and a 98% success rate, we stand as one of Pakistan&apos;s most trusted visa consultancy firms.
@@ -117,7 +117,7 @@ export default function AboutPage() {
                                     What sets us apart is our personalized approach. We understand that every client&apos;s situation is unique, and we tailor our services to meet individual needs. Our team of experienced consultants stays updated with the latest immigration policies and requirements across 50+ countries, ensuring you receive accurate and timely guidance.
                                 </p>
                                 <p>
-                                    Whether you&apos;re a student aspiring to study at a world-class university, a professional seeking better opportunities abroad, or a family planning to reunite with loved ones, Combat International is here to turn your international dreams into reality.
+                                    Whether you&apos;re a student aspiring to study at a world-class university, a professional seeking better opportunities abroad, or a family planning to reunite with loved ones, Combat Services is here to turn your international dreams into reality.
                                 </p>
                             </div>
                         </div>
