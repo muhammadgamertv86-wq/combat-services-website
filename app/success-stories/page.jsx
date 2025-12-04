@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import TestimonialCard from '@/components/TestimonialCard';
 import { TESTIMONIALS, BUSINESS_INFO } from '@/lib/constants';
 import { Award, Users, Globe, TrendingUp, Trophy, Star } from 'lucide-react';
+import ReviewForm from '@/components/ReviewForm';
 
 export default function SuccessStoriesPage() {
     return (
@@ -211,6 +212,13 @@ export default function SuccessStoriesPage() {
                             </div>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            {/* Review Form Section */}
+            <section className="section-padding bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+                <div className="container-custom">
+                    <ReviewForm />
                 </div>
             </section>
 
