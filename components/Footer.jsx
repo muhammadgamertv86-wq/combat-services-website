@@ -19,7 +19,7 @@ export default function Footer() {
                                     <img src="/images/logo.png" alt="Combat International" className="w-full h-full object-cover" />
                                 </div>
                                 <h2 className="text-2xl font-heading font-bold text-white">
-                                    COMBAT <span className="text-gold-500">SERVICES</span>
+                                    COMBAT <span className="text-gold-500">INTERNATIONAL</span>
                                 </h2>
                             </div>
                         </Link>
