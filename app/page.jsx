@@ -65,7 +65,7 @@ export default function HomePage() {
                 <div className="container-custom">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-                            Why Choose Combat Services?
+                            Why Choose Combat International?
                         </h2>
                         <p className="text-lg text-gray-100 max-w-2xl mx-auto">
                             We stand out from the competition with our commitment to excellence and client success

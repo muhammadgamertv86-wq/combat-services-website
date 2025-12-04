@@ -96,8 +96,8 @@ export default function ReviewForm() {
                                         <Star
                                             size={40}
                                             className={`transition-all ${star <= (hoveredRating || rating)
-                                                    ? 'fill-gold-500 text-gold-500'
-                                                    : 'text-slate-600'
+                                                ? 'fill-gold-500 text-gold-500'
+                                                : 'text-slate-600'
                                                 }`}
                                         />
                                     </motion.button>
@@ -208,7 +208,7 @@ export default function ReviewForm() {
                                 required
                                 rows={5}
                                 className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-gold-500 transition-colors resize-none"
-                                placeholder="Share your experience with Combat Services..."
+                                placeholder="Share your experience with Combat International..."
                             />
                         </div>
 
@@ -219,8 +219,8 @@ export default function ReviewForm() {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className={`w-full py-4 rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2 ${isSubmitting || rating === 0
-                                    ? 'bg-slate-700 text-slate-500 cursor-not-allowed'
-                                    : 'bg-gradient-to-r from-gold-500 to-gold-600 text-white hover:from-gold-600 hover:to-gold-700 shadow-lg hover:shadow-xl'
+                                ? 'bg-slate-700 text-slate-500 cursor-not-allowed'
+                                : 'bg-gradient-to-r from-gold-500 to-gold-600 text-white hover:from-gold-600 hover:to-gold-700 shadow-lg hover:shadow-xl'
                                 }`}
                         >
                             {isSubmitting ? (
